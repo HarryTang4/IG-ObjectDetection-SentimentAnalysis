@@ -1,0 +1,39 @@
+{
+    "cSpell.words": [
+        "allauth",
+        "apicall",
+        "argsort",
+        "cardiffnlp",
+        "copyto",
+        "creds",
+        "csrfmiddlewaretoken",
+        "dtype",
+        "escapejs",
+        "figsize",
+        "fromarray",
+        "imshow",
+        "instagramapi",
+        "instaloader",
+        "Keras",
+        "matplotlib",
+        "newaxis",
+        "objectdetection",
+        "pretrained",
+        "psutil",
+        "pyplot",
+        "savefig",
+        "scipy",
+        "sentimentanalysis",
+        "shortcode",
+        "shortcodes",
+        "socialaccount",
+        "softmax",
+        "tweepy",
+        "userid",
+        "userquery"
+    ],
+    "cSpell.enableFiletypes": [
+
+    ],
+    "C_Cpp.errorSquiggles": "enabled"
+}

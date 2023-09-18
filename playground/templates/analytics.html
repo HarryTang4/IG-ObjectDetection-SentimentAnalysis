@@ -1,0 +1,150 @@
+{% load static %}
+{% static "media/currentphotos" as photoURL %}
+{% static "media/cached" as currentOD %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InstantInsight</title>
+    <link rel="stylesheet" href="{%  static  'css/style.css'  %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</head>
+
+
+
+<body id="analytics">
+    <nav>
+        <div class="container">
+
+            <h2 class="logo">
+                Instant Insight
+            </h2>
+
+            <div class="profile-picture">
+                <img src="{{photoURL}}/17851019092760216.jpg" alt="">
+            </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="left">
+
+                <a class="profile">
+                    <div class="profile-picture">
+                        <img src="{{photoURL}}/17851019092760216.jpg" alt="">
+                    </div>
+                    <div class="handle">
+                        <h4>{{name}}</h4>
+                        <b>@{{username}}</b>
+                    </div>
+                </a>
+
+                <div class="sidebar">
+                    <a class="menu-item" id="">
+                        <span class="home-icon"></span>
+                        <h3>Home</h3>
+                    </a>
+                    <a class="menu-item active" id="analytics">
+                        <span class=" analytics-icon"></span>
+                        <h3>Analytics</h3>
+                    </a>
+                    <a class="menu-item" id="motivation">
+                        <span class="motivation-icon"></span>
+                        <h3>Motivation</h3>
+                    </a>
+                    <a class="menu-item" id="settings">
+                        <span class="settings-icon"></span>
+                        <h3>Settings</h3>
+
+                        <div class="settings-dropdown">
+
+                            <a class="setting-item" id="logout">
+                                <h3>Logout</h3>
+                            </a>
+
+                            <a class="setting-item" id="deletedata">
+                                <h3>Delete Data</h3>
+                            </a>
+
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="middle-analytics">
+
+                <div class="detected-image-box">
+                    <img src="{{currentOD}}/{{current_image}}" alt="" class="detected-image">
+                </div>
+
+                <div class="data-box">
+
+                    <div class="comments-selector">
+
+                        <form method="post" action="{% url 'analytics' %}">
+                            {% csrf_token %}
+                            <label class="label" for="comments">Select comment(s) to analyze: </label>
+                            <select name="comments" id="comments" multiple>
+                                {% for comment in comments %}
+                                <option value="{{comment}}">{{comment}}</option>
+                                {% endfor %}
+                            </select>
+                            <button type="submit">Submit</button>
+                        </form>
+
+                    </div>
+
+                    <div class="sentiment-data">
+                        <canvas id="myChart"></canvas>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </main>
+
+    <script>
+        var sentimentData = {{ sentiment_data | safe}};
+        const ctx = document.getElementById('myChart');
+
+        console.log(sentimentData);
+
+        new Chart(ctx, {
+            type: 'polarArea',
+            data: {
+                labels: ['Positive', 'Neutral', 'Negative'],
+                datasets: [{
+                    label: '% of total sentiment',
+                    data: [
+                        sentimentData.positive,
+                        sentimentData.neutral,
+                        sentimentData.negative
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+    <script src="{%  static  'analytics.js'  %}"></script>
+</body>
+
+</html>

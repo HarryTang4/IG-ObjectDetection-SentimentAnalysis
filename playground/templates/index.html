@@ -1,0 +1,163 @@
+{% load static %}
+{% static "media/currentphotos" as mediaURL %}
+{% static "media/cached" as currentOD %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InstantInsight</title>
+    <link rel="stylesheet" href="{%  static  'css/style.css'  %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</head>
+
+
+
+<body id="">
+
+    {% csrf_token %}
+
+    {% if show_div %}
+    <div id="loading-overlay">
+        <div class="spinner">Loading...</div>
+    </div>
+    {% endif %}
+
+    <nav>
+        <div class="container">
+
+            <h2 class="logo">
+                Instant Insight
+            </h2>
+
+            <div class="profile-picture">
+                <img src="{{photoURL}}/17851019092760216.jpg" alt="">
+            </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="left">
+
+                <a class="profile">
+                    <div class="profile-picture">
+                        <img src="{{photoURL}}/17851019092760216.jpg" alt="">
+                    </div>
+                    <div class="handle">
+                        <h4>{{name}}</h4>
+                        <b>@{{username}}</b>
+                    </div>
+                </a>
+
+                <div class="sidebar">
+                    <a class="menu-item active" id="">
+                        <span class="home-icon"></span>
+                        <h3>Home</h3>
+                    </a>
+                    <a class="menu-item" id="analytics/">
+                        <span class=" analytics-icon"></span>
+                        <h3>Analytics</h3>
+                    </a>
+                    <a class="menu-item" id="motivation/">
+                        <span class="motivation-icon"></span>
+                        <h3>Motivation</h3>
+                    </a>
+                    <a class="menu-item" id="settings">
+                        <span class="settings-icon"></span>
+                        <h3>Settings</h3>
+
+                        <div class="settings-dropdown">
+
+                            <a class="setting-item" id="logout">
+                                <h3>Logout</h3>
+                            </a>
+
+                            <a class="setting-item" id="deletedata">
+                                <h3>Delete Data</h3>
+                            </a>
+
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="middle">
+                <div class="followers-box">
+                    <a class="followers">
+                        <h1>{{follower_count}}</h1>
+                        <h2>Followers</h2>
+                    </a>
+
+                    <a class="engagement-box">
+                        <h1 id="engagement">{{engagement}}</h1>
+                        <h2>Post Engagement Rate</h2>
+                    </a>
+                </div>
+
+                <a class="statistics-box">
+                    <div class="basic-statistics">
+                        <h4 id="likes">{{likes}}</h4>
+                        <span class="like-icon"></span>
+                        <b>Likes</b>
+                    </div>
+
+                    <div class="basic-statistics">
+                        <h4 id="comments">{{comments}}</h4>
+                        <span class="comment-icon"></span>
+                        <b>Comments</b>
+                    </div>
+                </a>
+
+                <div class="my-photos-box">
+                    <h1>Photo Gallery</h1>
+                </div>
+
+                <div class="picture-grid">
+
+                    <div class="column">
+                        {% for mediaID in gallery_list1 %}
+                        <img src="{{mediaURL}}/{{mediaID}}.jpg" alt="">
+                        {% endfor %}
+                    </div>
+
+                    <div class="column">
+                        {% for mediaID in gallery_list2 %}
+                        <img src="{{mediaURL}}/{{mediaID}}.jpg" alt="">
+                        {% endfor %}
+                    </div>
+
+                    <div class="column">
+                        {% for mediaID in gallery_list3 %}
+                        <img src="{{mediaURL}}/{{mediaID}}.jpg" alt="">
+                        {% endfor %}
+                    </div>
+
+                    <div class="column">
+                        {% for mediaID in gallery_list4 %}
+                        <img src="{{mediaURL}}/{{mediaID}}.jpg" alt="">
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+            </div>
+    </main>
+
+    <div class="photo-selector" id="photo-selector">
+        <div class="photo-selector-inner">
+            <div class="photo-selector-face" id="photo-selector-face">
+                <div class="current-img" id="current-img">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="{%  static  'index.js'  %}" type="module"></script>
+</body>
+
+</html>

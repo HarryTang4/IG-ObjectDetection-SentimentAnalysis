@@ -1,0 +1,110 @@
+{% load static %}
+{% static "media/currentphotos" as photoURL %}
+{% static "media/cached" as currentOD %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InstantInsight</title>
+    <link rel="stylesheet" href="{%  static  'css/style.css'  %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</head>
+
+
+
+<body id="motivation">
+    <nav>
+        <div class="container">
+
+            <h2 class="logo">
+                Instant Insight
+            </h2>
+
+            <div class="profile-picture">
+                <img src="{{photoURL}}/17851019092760216.jpg" alt="">
+            </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="left">
+
+                <a class="profile">
+                    <div class="profile-picture">
+                        <img src="{{photoURL}}/17851019092760216.jpg" alt="">
+                    </div>
+                    <div class="handle">
+                        <h4>{{name}}</h4>
+                        <b>@{{username}}</b>
+                    </div>
+                </a>
+
+                <div class="sidebar">
+                    <a class="menu-item" id="">
+                        <span class="home-icon"></span>
+                        <h3>Home</h3>
+                    </a>
+                    <a class="menu-item" id="analytics">
+                        <span class=" analytics-icon"></span>
+                        <h3>Analytics</h3>
+                    </a>
+                    <a class="menu-item active" id="motivation">
+                        <span class="motivation-icon"></span>
+                        <h3>Motivation</h3>
+                    </a>
+                    <a class="menu-item" id="settings">
+                        <span class="settings-icon"></span>
+                        <h3>Settings</h3>
+
+                        <div class="settings-dropdown">
+
+                            <a class="setting-item" id="logout">
+                                <h3>Logout</h3>
+                            </a>
+
+                            <a class="setting-item" id="deletedata">
+                                <h3>Delete Data</h3>
+                            </a>
+
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="middle-motivation">
+                <h1>Motivation</h1>
+                <p>
+                    Since the advent of social media, researchers have been interested in understanding how people react
+                    to different types of media. The emergence of social networks has transformed the
+                    way in which information is spread, and social media platforms have become a central hub for
+                    communication and information exchange. Therefore understanding how users interact with media on
+                    social networks has become critical, especially for: marketers, influencers, and other stakeholders
+                    who want to maximize their reach and impact.
+                </p>
+                <h2>~</h2>
+                <p>
+                    One approach to understanding user behavior on social media is through the use of object detection
+                    and sentiment analysis. Object detection is a computer vision technique that allows users to
+                    identify the objects within their posts, while sentiment analysis uses natural language processing
+                    to determine the sentiment of the comments associated with a post. By combining these techniques in
+                    this project, users can gain visual and quantifiable data on how their posts have performed.
+                </p>
+                <h2>~</h2>
+                <p2 class="text-muted">
+                    COMP390 201458608
+                </p2>
+            </div>
+        </div>
+    </main>
+    <script src="{%  static  'motivation.js'  %}"></script>
+</body>
+
+</html>
