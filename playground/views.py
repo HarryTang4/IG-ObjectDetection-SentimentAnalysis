@@ -223,8 +223,8 @@ def welcome(request):
             url = 'https://api.instagram.com/oauth/access_token'
 
             payload = {
-                'client_id': '703598721002755',
-                'client_secret': '88b2772bb13307c858e7e228dddd8a9b',
+                'client_id': '',
+                'client_secret': '',
                 'grant_type': 'authorization_code',
                 'redirect_uri': 'https://localhost:8000/welcome/',
                 'code': code
@@ -241,7 +241,7 @@ def welcome(request):
 
 
 def login(request):
-    client_id = '703598721002755'
+    client_id = ''
     redirect_uri = 'https://localhost:8000/welcome/'
     scope = 'user_profile'
 
