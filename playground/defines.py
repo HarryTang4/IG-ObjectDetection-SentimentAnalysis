@@ -21,8 +21,8 @@ creds = dict()
 def set_creds():
 
     # Project specific credentials
-    creds['client_id'] = '275852027971635'
-    creds['client_secret'] = '4101b06db1a41a2513f97f0f99d5bb3b'
+    creds['client_id'] = ''
+    creds['client_secret'] = ''
     creds['endpoint_base'] = 'https://graph.facebook.com/v16.0/'
 
     # User access tokens
